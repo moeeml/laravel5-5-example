@@ -18,7 +18,11 @@ class CommentRepository
      */
     public function getAll($nbrPages, $parameters)
     {
-        return Comment::with ('ingoing', 'user', 'post' )
+        return Comment::with ([
+                'ingoing',
+                'user',
+                'post' => function ($query) { $query->withCount('comments'); }
+            ])
             ->latest()
             ->when ($parameters['new'], function ($query) {
                 $query->has ('ingoing');
@@ -39,7 +43,7 @@ class CommentRepository
     public function getNextComments(Post $post, $page)
     {
         return $post->parentComments()
-            ->with('allRepliesWithOwner')
+            ->with('user')
             ->latest()
             ->skip($page * config('app.numberParentComments'))
             ->take(config('app.numberParentComments'))

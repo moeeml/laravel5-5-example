@@ -8,7 +8,8 @@
 * type `cd projectname`
 * type `composer install`
 * type `composer update`
-* type `php artisan key:generate`to regenerate secure key
+* copy *.env.example* to *.env*
+* type `php artisan key:generate`to generate secure key in *.env* file
 * if you use MySQL in *.env* file :
    * set DB_CONNECTION
    * set DB_DATABASE
@@ -30,6 +31,8 @@
 * [Intervention Image](http://image.intervention.io/) for image manipulation
 * [Email confirmation](https://github.com/bestmomo/laravel-email-confirmation) the package for email confirmation
 * [Artisan language](https://github.com/bestmomo/laravel-artisan-language) the package for language strings management
+* [Laravel debugbar](https://github.com/barryvdh/laravel-debugbar)
+* [Etrepat baum](https://github.com/etrepat/baum) for comments management
 
 ### Features ###
 
@@ -63,6 +66,10 @@ When you want to launch the tests refresh and populate the database :
 
 `php artisan migrate:fresh --seed`
 
-You must have default settings.
+You must have default settings and en language.
 
 You can then use Dusk.
+
+### License ###
+
+This example for Laravel is open-sourced software licensed under the MIT license
